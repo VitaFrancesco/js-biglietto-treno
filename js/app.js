@@ -1,22 +1,38 @@
 // richiesta valori in input
-let km = parseInt(prompt("Insrisci i km che vorresti percorrere...", 10))
+let km
 let age
 
 // controllo dei valori ricevuti
-let controlAge = false
-while (controlAge === false) {
-    age = prompt("Inserisci la tua età...")
-    if ((!(age < 100) && !(age > 0)) || age !== Number) {
-        alert("L'età deve essere espressa in numeri interi e compresa tra 0 e 100!")
+let regex = /^[0-9]+$/g
+let kmControl = false
+let ageControl = false
+
+do {
+    km = prompt("Insrisci i km che vorresti percorrere...", 10)
+    if (regex.test(km) === false) {
+        alert("Inserisci i km in numeri interi senza punteggiatura o lettere!")
+    } else if (!((km > 0) && (km <= 12000))) {
+        alert("Inserisci un numero di km idoneo!")
     } else {
-        controlAge = true
+        kmControl = true
     }
-}
-while (!(age < 100) && !(age > 0) && (typeof(age) === Number)) {
-    alert("L'età deve essere espressa in numeri interi e compresa tra 0 e 100!")
+} while (kmControl === false)
+
+do {
     age = prompt("Inserisci la tua età...")
-}
-age = parseInt(age)
+    if (regex.test(age) === false) {
+        alert("L'età deve essere espressa in numeri interi senza punteggiatura o lettere!")
+    } else {
+        age = parseInt(age)
+        if (!((age > 0) && (age <= 100))){
+            alert("L'età deve essere espressa in numeri interi e compresa tra 0 e 100!")
+        } else {
+            ageControl = true
+        }
+    }
+} while (ageControl === false)
+
+// isNaN(X) === true "non è un numero"
 
 // prezzo iniziale dato dai km
 let price = km * 0.21

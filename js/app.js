@@ -54,10 +54,10 @@ let ageControl = false
 // (price-discount).toFixed(2)
 
 //***************************************************//
-function validString (inputString) {
+function invalidString (inputString) {
     let stringLength = inputString.length, letteraVar
     for (i = 0; i < stringLength ; i++) {
-        letteraVar = parseInt(inputString.slice(i, i + 1))
+        letteraVar = parseInt(inputString.charAt(i))
         if (isNaN(letteraVar)) {
             return true
         }
@@ -72,7 +72,7 @@ function validString (inputString) {
 
 do {
     km = prompt("Insrisci i km che vorresti percorrere...", 10)
-    if (validString(km)) {
+    if (invalidString(km)) {
         alert("Inserisci i km in numeri interi senza punteggiatura o lettere!")
     } else {
         km = parseInt(km)
@@ -86,7 +86,7 @@ do {
 
 do {
     age = prompt("Inserisci la tua età...")
-    if (validString(age)) {
+    if (invalidString(age)) {
         alert("L'età deve essere espressa in numeri interi senza punteggiatura o lettere!")
     } else {
         age = parseInt(age)
